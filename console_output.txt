@@ -1,0 +1,225 @@
+Baixando dados...
+  PIB: 1996-01-01–2026-01-01 | NUCI: 2001-01-01–2026-05-01 | Desemp: 2012-03-01–2026-04-01 | Caged: 2010-01-01–2026-04-01
+
+I.  Tendência Quadrática com Quebras (BCB)...
+    Hiato atual: +0.67 p.p.
+II.  Tendência Não-Paramétrica (LOESS, bwidth=0.4)...
+    Hiato atual: +0.05 p.p.
+III. Hodrick-Prescott (λ=1600)...
+    Hiato atual: -0.24 p.p.
+IV.  Tendência ℓ₁ (Kim et al., 2009)...
+(conv.791)     Hiato atual: +0.78 p.p.
+V.   HP Modificada (Andrle/BCB AR(2))...
+    Otimizando MLE... OK | Hiato atual: -0.03 p.p.
+VI.  Band-Pass Christiano-Fitzgerald (8-32 trimestres)...
+    Hiato atual: -0.13 p.p.
+VII. Beveridge-Nelson modificado (Kamber et al., 2018)...
+    rho* = -0.97 | delta implícito = 0.142 | Hiato atual: +0.17 p.p.
+    [Ref.: pró-cíclico (corr>0 c/ HP); BCB Tabela 1 dava -0,30 em 2024T1 no vintage de jun/24]
+
+MI.  Função de Produção — Combinação Simples...
+    Período multivariado: 2012-04-01 a 2026-01-01 (56 obs.)
+    Hiato atual: -1.00 p.p. | DP: 1.39 p.p.
+
+MV.  PCA — Componentes Principais (BCB RI Jun/2024)...
+    Período PCA: 2012-04-01 a 2026-01-01 (56 obs.)
+    Variância explicada: PC1=65.6%, PC2=18.1%, PC3=13.4%, PC4=3.0%
+    BCB reporta: PC1 = 71,9% (referência)
+    Loadings do PC1: PIB=0.499, NUCI=0.523, -Desemp=0.467, Caged=0.509
+    Hiato PCA atual: +0.74 p.p. | DP: 2.03 p.p.
+    [Robustez] PC1 com NUCI em hiato HP: 62.5% (vs 65.6% com NUCI em nível)
+
+MII.2 Areosa (2008) — HP triplo com restrição CD (solução exata)...
+    Pesos: 0.658·FP + 0.342·HP (κ=1.52)
+    Corr(Areosa, FP): 0.9790 | Corr(Areosa, HP-PIB): 0.9634
+    Hiato Areosa atual: -0.74 p.p. | DP: 1.56 p.p.
+    max|Areosa − FP| na amostra: 1.01 p.p.
+
+MII.4 Jarocinski & Lenza (2018) — fator dinâmico (versão linearizada)...
+    Baixando núcleo IPCA (serviços, SGS 10844)...     Baixando Focus 12m (SGS 13522)... OK
+    Período JL: 2012-04-01 a 2026-01-01 (56 obs.)
+    Otimizando MLE (Nelder-Mead)... val=106.66 | BFGS... val_final=106.6588
+    φ₁=0.549, φ₂=0.000 | loadings: b²=0.754, b³=0.021, b⁴=0.369
+    Hiato JL atual: -0.25 p.p. | DP: 2.03 p.p.
+    Corr(JL, PCA): 0.808 | Corr(JL, FP): 0.889
+
+MII.3 CBO — Função de produção com regressões por partes...
+    Baixando PME nova (FTP IBGE)... OK
+    Empalme PME→PNADC: overlap=11 tri | corr=0.953 | ajuste=+1.91 p.p.
+    Baixando estoque de capital (Ipeadata DIMAC_CF_ELC_TOT12)... OK (540 obs)
+    K estendido em 5 trimestres (FBKF média = 65001)
+    Amostra CBO: 2002-04-01 a 2026-01-01 (86 obs.)
+    Coef. Egap: FBKF=-0.010 | NUCI=1.527 | PTF=-0.0014
+    Hiato CBO atual: +0.59 p.p. | DP: 2.54 p.p.
+    Corr(CBO, HP): 0.888 | Corr(CBO, FP 2012+): 0.663
+Warning message:
+In log(df_cbo$FBKF) : NaNs produced
+Warning message:
+In geom_vline(data = df_qbr, aes(xintercept = data), linetype = "dotted",  :
+  Ignoring unknown parameters: `inherit.aes`
+
+Montando gráfico consolidado (thick modeling)...
+    Métodos por trimestre: 6 (1996-2012) a 11 (2012+)
+    Amplitude da faixa em 2026-01-01: 1.77 p.p. (de -1.00 a +0.78)
+
+Exercício de tempo real (HP e TQ, vintages trimestrais desde 2006T1)...
+
+=== REVISÕES (final − tempo real), indicadores estilo WP 203 ===
+Método                                   RAM   RRQM corr(RT,final)  troca sinal
+-------------------------------------------------------------------------------- 
+III — Hodrick-Prescott (λ=1600)       1.52   2.00          0.555        32.1%
+I — Tend. Quadrática c/ Quebras       1.20   1.56          0.434        50.6%
+
+Cenário 2 — Previsão de inflação (Phillips fora-da-amostra)...
+    Vintages NP/L1/BP/BN (pode levar ~1-2 min) (conv.2343) (conv.1838) (conv.2266) (conv.3993) (conv.4178) (conv.2810) (conv.2582) (conv.2325) (conv.2183) (conv.2167) .(conv.1841) (conv.1988) (conv.2703) (conv.2777) (conv.2467) (conv.2411) (conv.1604) (conv.1150) (conv.1343) (conv.3879) .(conv.3402) (conv.4154) (conv.4236) (conv.4257) (conv.4828) (conv.1470) (conv.1188) (conv.1279) (conv.1001) (conv.975) .(conv.1013) (conv.1091) (conv.1211) (conv.2888) (conv.3951) (conv.3947) (conv.3860) (conv.4596) (conv.2770) (conv.2172) .(conv.1983) (conv.2161) (conv.4627) (conv.3276) (conv.2946) (conv.2556) (conv.1920) (conv.1569) (conv.1334) (conv.1130) .(conv.852) (conv.833) (conv.1365) (conv.2697) (conv.3246) (conv.852) (conv.878) (conv.3446) (conv.1819) (conv.1972) .(conv.2372) (conv.2636) (conv.1096) (conv.1057) (conv.1326) (conv.1203) (conv.1246) (conv.1248) (conv.1209) (conv.847) .(conv.790) (conv.800) (conv.806) (conv.826) (conv.818) (conv.805) (conv.804) (conv.801) (conv.798) (conv.794) .(conv.791)  OK
+
+=== CENÁRIO 1 — REVISÕES (final − tempo real): UNIVARIADOS + MEDIANA ===
+Hiato     RAM   RRQM corr(RT,final)   troca sinal
+---------------------------------------------------- 
+TQ       1.20   1.56          0.434         50.6%
+NP       1.57   1.99          0.172         59.3%
+HP       1.52   2.00          0.555         32.1%
+L1       2.24   2.71          0.265         38.3%
+BP       0.83   1.12          0.689         30.9%
+BN       0.59   0.78          0.975         13.6%
+MED      0.95   1.27          0.667         30.9%
+Nota: vintages trimestrais 2006T1+; pseudo-tempo real (isola viés de final de amostra).
+      HPM omitido (MLE/KFAS por vintage computacionalmente proibitivo).
+
+=== CENÁRIO 2 — PHILLIPS FORA-DA-AMOSTRA (h=4, 57 previsões) ===
+Benchmark AR: RMSE = 2.636 p.p. (inflação acumulada 4T)
+
+Hiato        RMSE    RMSE/AR   DM p-valor
+-------------------------------------------- 
+TQ          2.636      1.000        1.000
+NP          2.915      1.106        0.276
+HP          2.738      1.038        0.333
+L1          2.715      1.030        0.766
+BP          2.954      1.121        0.098
+BN          3.174      1.204        0.110
+MED         2.716      1.030        0.116
+
+RMSE/AR < 1: hiato agrega conteúdo preditivo. DM: H0 = mesmo RMSE (poder baixo, ~ 57 obs).
+
+--- Subamostra pré-COVID (origens 2011T1-2019T4, 36 previsões) ---
+Hiato       RMSE/AR   DM p-valor
+TQ            1.029        0.337
+NP            1.020        0.679
+HP            1.039        0.162
+L1            0.946        0.169
+BP            1.183        0.129
+BN            1.276        0.208
+MED           1.049        0.006
+
+Cenário 4 — Evento COVID (vintage congelado em 2019T4)...
+(conv.852) 
+=== CENÁRIO 4 — REVISÃO RETROATIVA DO HIATO 2017-2019 (final − vintage 2019T4) ===
+Hiato   rev. média      RAM |rev| máx rev. em 2019T4
+-------------------------------------------------------- 
+TQ           +0.31     0.35       0.94         +0.94
+NP           +0.70     1.15       2.09         +2.04
+HP           +0.44     0.44       0.57         +0.04
+L1           -0.58     0.58       1.06         -1.06
+BP           +0.88     0.98       2.41         -0.58
+BN           +0.22     0.22       0.47         +0.10
+MED          +0.48     0.48       0.89         +0.60
+rev > 0: o método passou a ver a economia pré-COVID MAIS aquecida após observar 2020.
+
+════════════════════════════════════════════════════════════════════
+              TABELA-SÍNTESE: CENÁRIO × MÉTODO
+════════════════════════════════════════════════════════════════════
+       | C1 Tempo real  | C2 Prev.infl.  | C3 Histórica  | C4 Rupturas   
+Hiato  | RRQM (rank)    | RMSE/AR (rank) | %CODACE (rank) | RAM (rank)    
+---------------------------------------------------------------------------- 
+TQ     |   1.56    (4°) |   1.029   (3°) |   56.2%   (7°) |   0.35    (2°)
+NP     |   1.99    (5°) |   1.020   (2°) |   62.5%   (4°) |   1.15    (7°)
+HP     |   2.00    (6°) |   1.039   (4°) |   62.5%   (4°) |   0.44    (3°)
+L1     |   2.71    (7°) |   0.946   (1°) |   71.9%   (2°) |   0.58    (5°)
+BP     |   1.12    (2°) |   1.183   (6°) |   81.2%   (1°) |   0.98    (6°)
+BN     |   0.78    (1°) |   1.276   (7°) |   61.5%   (6°) |   0.22    (1°)
+MED    |   1.27    (3°) |   1.049   (5°) |   62.5%   (4°) |   0.48    (4°)
+---------------------------------------------------------------------------- 
+VENCEDOR POR CENÁRIO:  C1: BN | C2: L1 | C3: BP | C4: BN
+Melhor rank médio: L1 (3.75)
+Warning message:
+Removed 1 rows containing missing values (`position_stack()`). 
+  /home/claude/run_output/g8_multi_cbo.png
+  /home/claude/run_output/g9_phillips_oos.png
+  /home/claude/run_output/g10_evento_covid.png
+  /home/claude/run_output/g11_sintese.png
+
+Gráficos salvos:
+  /home/claude/run_output/g1_univariados.png
+  /home/claude/run_output/g2_multi_funcao_producao.png
+  /home/claude/run_output/g3_multi_pca.png
+  /home/claude/run_output/g4_multi_areosa.png
+  /home/claude/run_output/g5_multi_jl.png
+  /home/claude/run_output/g6_consolidado.png
+  /home/claude/run_output/g7_tempo_real.png
+Warning message:
+Removed 1 rows containing missing values (`position_stack()`). 
+There were 50 or more warnings (use warnings() to see the first 50)
+
+=== GRUPO I — UNIVARIADOS ===
+Método                                          Atual   Média       DP
+------------------------------------------------------------------------- 
+I — Tend. Quadrática c/ Quebras              +0.67%   -0.00%    1.16%
+II — Tend. Não-Paramétrica (LOESS)          +0.05%   +0.03%    1.68%
+III — Hodrick-Prescott (λ=1600)              -0.24%   -0.00%    1.77%
+IV — Tendência ℓ₁ (Kim et al., 2009)     +0.78%   +0.00%    1.97%
+V — HP Modificada (Andrle/BCB)                -0.03%   -0.00%    1.56%
+VI — Band-Pass (CF, 8-32T)                    -0.13%   +0.04%    1.36%
+VII — Beveridge-Nelson (Kamber et al., 2018)   +0.17%   -0.07%    1.97%
+
+=== GRUPO II — MULTIVARIADO I ===
+Período: 2012-04-01 a 2026-01-01
+Hiato FP atual:  -1.00 p.p.
+Média:           -0.00 p.p.
+DP:              1.39 p.p.
+
+=== GRUPO II — MULTIVARIADO V: PCA ===
+Período: 2012-04-01 a 2026-01-01 (56 obs.)
+Variância explicada PC1: 65.6%
+Hiato PCA atual:  +0.74 p.p.
+Média:            -0.00 p.p.
+DP:               2.03 p.p.
+
+=== GRUPO II — MULTIVARIADO II: AREOSA (2008) ===
+Período: 2012-04-01 a 2026-01-01
+Hiato Areosa atual: -0.74 p.p.
+Média:              -0.00 p.p.
+DP:                 1.56 p.p.
+Corr(Areosa, FP):   0.979
+
+=== GRUPO II — MULTIVARIADO IV: JAROCINSKI & LENZA ===
+Período: 2012-04-01 a 2026-01-01 (56 obs.)
+Hiato JL atual:  -0.25 p.p.
+Média:           -0.00 p.p.
+DP:              2.03 p.p.
+Corr(JL, PCA):   0.808
+Corr(JL, FP):    0.889
+
+=== GRUPO II — MULTIVARIADO III: CBO ===
+Período: 2002-04-01 a 2026-01-01 (86 obs.)
+Hiato CBO atual: +0.59 p.p.
+Média:           +0.01 p.p.
+DP:              2.54 p.p.
+
+=== CORRELAÇÕES CRUZADAS — UNIVARIADOS × MULTIVARIADOS (período comum) ===
+Período: 2012-04-01 a 2026-01-01 (56 obs.)
+
+       TQ    NP    HP    L1   HPM    BP    BN    FP   PCA    JL   CBO
+TQ  1.000 0.737 0.665 0.600 0.740 0.462 0.424 0.505 0.393 0.699 0.498
+NP  0.737 1.000 0.955 0.872 0.993 0.725 0.684 0.853 0.731 0.968 0.782
+HP  0.665 0.955 1.000 0.964 0.967 0.710 0.767 0.835 0.822 0.935 0.924
+L1  0.600 0.872 0.964 1.000 0.890 0.660 0.769 0.792 0.886 0.891 0.943
+HPM 0.740 0.993 0.967 0.890 1.000 0.681 0.684 0.844 0.733 0.962 0.814
+BP  0.462 0.725 0.710 0.660 0.681 1.000 0.579 0.505 0.498 0.678 0.636
+BN  0.424 0.684 0.767 0.769 0.684 0.579 1.000 0.567 0.682 0.620 0.801
+FP  0.505 0.853 0.835 0.792 0.844 0.505 0.567 1.000 0.845 0.889 0.663
+PCA 0.393 0.731 0.822 0.886 0.733 0.498 0.682 0.845 1.000 0.808 0.790
+JL  0.699 0.968 0.935 0.891 0.962 0.678 0.620 0.889 0.808 1.000 0.746
+CBO 0.498 0.782 0.924 0.943 0.814 0.636 0.801 0.663 0.790 0.746 1.000
+
+Nota: Areosa omitido — comb. convexa 0,658·FP+0,342·HP (Proposição 1; corr 0,979 c/ FP),
+      não altera a faixa mín–máx. Referência de comparação: Tabela 2, BCB RI Jun/2024.
